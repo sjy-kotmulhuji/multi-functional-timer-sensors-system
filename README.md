@@ -37,7 +37,7 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 --------------------------------------------------------------------------------
 
 ### 🎛 입출력 소자 및 인터페이스
-#### Switches & Buttons
+### Switches & Buttons
 | 소자 | 역할 | 상세 동작 |
 | ------ | ------ | ------ |
 | **sw** | 카운트 방향 | 0: Up count / 1: Down count |
@@ -47,7 +47,7 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 | **btn_l / btn_r** | 기능 제어 | 스톱워치 Clear/Run-Stop, 시계 수정 위치 선택 |
 | **btn_u / btn_d** | 값 수정 | 시계 설정 모드에서 시간 값 증가/감소 |
 
-#### UART Key Input (PC -> FPGA)
+### UART Key Input (PC -> FPGA)
 *   **'u' / 'd'**: 시계 값 증가 / 감소
 *   **'l' / 'r'**: 자리 선택 또는 스톱워치 제어 (Clear/Run-Stop)
 *   **'s'**: 현재 FND 출력값(시간 또는 센서 데이터)을 PC 터미널로 전송
@@ -56,12 +56,12 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 
 ### 🧩 모듈 상세 설명
 
-#### 1. UART & FIFO
+### 1. UART & FIFO
 *   **UART RX/TX**: 비동기 통신을 수행하며, 1비트의 보드 레이트 오차를 줄이기 위해 **x16 오버샘플링** 기법을 적용했습니다.
 *   **FIFO Buffer**: UART 수신/송신 시 데이터 유실을 방지하고 흐름을 제어하기 위해 RX와 TX 단에 각각 버퍼를 설계했습니다.
 *   **ASCII Decoder/Sender**: UART로 입력된 문자를 시스템 제어용 **Tick 신호**로 변환하거나 내부 데이터를 ASCII 포맷으로 변환하여 송신합니다.
 
-#### 2. Stopwatch & Watch (Module Structure)
+### 2. Stopwatch & Watch (Module Structure)
 *   **Stopwatch**:
     *   **Control Unit (FSM)**: `STOP`, `RUN`, `CLEAR` 상태를 관리하며, `RUN` 상태에서는 `CLEAR`가 동작하지 않도록 설계되었습니다.,
     *   **Datapath**: 100Hz tick을 기준으로 밀리초부터 시간까지 카운트하며, `mode` 신호에 따라 정방향/역방향 카운트를 수행합니다.,
@@ -70,7 +70,7 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
     *   **Modify Selector**: 버튼 입력을 받아 시/분/초/밀리초 중 수정할 위치(`LEFT`/`RIGHT`)를 결정합니다.,
     *   **Datapath**: 현재 시간을 유지하며, 수정 신호 발생 시 해당 자리의 값을 가감합니다.,
 
-#### 3. Sensors
+### 3. Sensors
 *   **SR04 (초음파 센서)**: 40kHz 펄스를 발생시킨 후 Echo 신호의 High 유지 시간을 측정하여 거리(cm)로 환산합니다.,
 *   **DHT11 (온습도 센서)**: 단일 와이어 **Half Duplex** 통신을 통해 40비트 데이터를 수신하며, 체크섬을 통해 유효성을 검증합니다.,
 
@@ -88,12 +88,12 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 ### 🧪 UVM-style 검증 (Stopwatch / Watch)
 시스템의 신뢰성을 위해 Testbench 내부의 Golden Model과 DUT 출력을 비교하는 검증을 수행했습니다.,
 
-#### 1. Stopwatch 검증
+### 1. Stopwatch 검증
 *   **시나리오**: `mode`, `clear`, `run_stop` 신호를 랜덤 생성하여 DUT와 Scoreboard 내 자체 카운터 값을 비교했습니다.
 *   **Timing**: Driving(posedge + 1ns), Sampling(negedge)을 통해 데이터 안정성을 확보했습니다.
 *   **결과**: 검증 과정에서 `clear` 시 100Hz tick count가 초기화되지 않는 설계 오류를 발견하여 수정했습니다.,
 
-#### 2. Watch 검증
+### 2. Watch 검증
 *   **시나리오**: `left`, `right`, `up`, `down`, `sw_2` 신호를 랜덤 생성하여 시간 수정 동작을 검증했습니다.
 *   **Timing**: 중복 동작 방지를 위해 입력 신호를 1클럭만 유지하고, negedge에서 값을 변경한 후 posedge에서 샘플링했습니다.
 *   **결과**: Monitor에서 `sw_2` 신호 누락으로 인해 엉뚱한 자리가 수정되던 문제를 발견하고 해결하여 최종 **All Pass**를 확인했습니다.,
