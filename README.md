@@ -62,7 +62,7 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 ### 🧩 모듈 상세 설명
 
 ### 1. UART & FIFO
-<img width="2811" height="1640" alt="Image" src="https://github.com/user-attachments/assets/804717bf-bc93-420b-ac62-8391da59446a" />
+<img width="2613" height="1623" alt="Image" src="https://github.com/user-attachments/assets/87c92ea5-4d29-45c3-b80e-4579c5abd08d" />
 
 *   **UART RX/TX**: 비동기 통신을 수행하며, 1비트의 보드 레이트 오차를 줄이기 위해 **x16 오버샘플링** 기법을 적용했습니다.
 *   **FIFO Buffer**: UART 수신/송신 시 데이터 유실을 방지하고 흐름을 제어하기 위해 RX와 TX 단에 각각 버퍼를 설계했습니다.
