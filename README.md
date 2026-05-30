@@ -36,27 +36,34 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 --------------------------------------------------------------------------------
 
 ### 🎛 입출력 소자 및 인터페이스
-![image]({<img width="622" height="375" alt="Image" src="https://github.com/user-attachments/assets/25e76c03-2bd7-4d64-a605-6af052fe7893" />})
+<img width="622" height="375" alt="Image" src="https://github.com/user-attachments/assets/25e76c03-2bd7-4d64-a605-6af052fe7893" />
+
 ### Switches & Buttons
 | 소자 | 역할 | 상세 동작 |
 | ------ | ------ | ------ |
-| **sw** | 카운트 방향 | 0: Up count / 1: Down count |
-| **sw** | 메인 모드 선택 | 0: Watch / 1: Stopwatch |
-| **sw** | 시간 표시 단위 | 0: sec.msec / 1: hour.min |
-| **sw** | 센서/시계 모드 선택 | 0: SR04-Watch / 1: DHT11-Stopwatch |
-| **btn_l / btn_r** | 기능 제어 | 스톱워치 Clear/Run-Stop, 시계 수정 위치 선택 |
+| **sw[0]** | 시계 카운트 방향 | 0: Up count / 1: Down count |
+| **sw[1]** | 시계/센서 종류 선택 | 0: Watch-SR04 / 1: Stopwatch-DHT11 |
+| **sw[2]** | 시계/센서 모드 선택 | 0: 시계(sw/w) / 1: 센서(SR04/DHT11) |
+| **sw[3]** | 표시할 데이터 선택 | 0: sec.msec-습도 / 1: hour.min-온도 |
+| **btn_l / btn_r** | 기능 제어 | 스톱워치 Clear/Run-Stop, 시계 수정 자리 선택 |
 | **btn_u / btn_d** | 값 수정 | 시계 설정 모드에서 시간 값 증가/감소 |
 
 ### UART Key Input (PC -> FPGA)
 *   **'u' / 'd'**: 시계 값 증가 / 감소
-*   **'l' / 'r'**: 자리 선택 또는 스톱워치 제어 (Clear/Run-Stop)
+*   **'l' / 'r'**: 시계 값 수정 자리 선택 또는 스톱워치 제어 (Clear/Run-Stop)
 *   **'s'**: 현재 FND 출력값(시간 또는 센서 데이터)을 PC 터미널로 전송
 
 --------------------------------------------------------------------------------
 
+### 전체 Block Diagram
+
+<img width="3257" height="1655" alt="Image" src="https://github.com/user-attachments/assets/09c5c411-6050-43f4-8215-f4f0b888ec29" />
+
 ### 🧩 모듈 상세 설명
 
 ### 1. UART & FIFO
+<img width="2811" height="1640" alt="Image" src="https://github.com/user-attachments/assets/804717bf-bc93-420b-ac62-8391da59446a" />
+
 *   **UART RX/TX**: 비동기 통신을 수행하며, 1비트의 보드 레이트 오차를 줄이기 위해 **x16 오버샘플링** 기법을 적용했습니다.
 *   **FIFO Buffer**: UART 수신/송신 시 데이터 유실을 방지하고 흐름을 제어하기 위해 RX와 TX 단에 각각 버퍼를 설계했습니다.
 *   **ASCII Decoder/Sender**: UART로 입력된 문자를 시스템 제어용 **Tick 신호**로 변환하거나 내부 데이터를 ASCII 포맷으로 변환하여 송신합니다.
