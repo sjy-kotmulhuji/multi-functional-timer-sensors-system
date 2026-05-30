@@ -55,7 +55,7 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 
 --------------------------------------------------------------------------------
 
-### 전체 Block Diagram
+### 🖌 전체 Block Diagram
 
 <img width="3257" height="1655" alt="Image" src="https://github.com/user-attachments/assets/09c5c411-6050-43f4-8215-f4f0b888ec29" />
 
