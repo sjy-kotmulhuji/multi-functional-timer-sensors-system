@@ -36,6 +36,7 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 --------------------------------------------------------------------------------
 
 ### 🎛 입출력 소자 및 인터페이스
+![image]({<img width="622" height="375" alt="Image" src="https://github.com/user-attachments/assets/25e76c03-2bd7-4d64-a605-6af052fe7893" />})
 ### Switches & Buttons
 | 소자 | 역할 | 상세 동작 |
 | ------ | ------ | ------ |
