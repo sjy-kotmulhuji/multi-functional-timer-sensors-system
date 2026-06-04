@@ -1,4 +1,4 @@
-## ⏱️ UART · FIFO · Stopwatch · Watch · Sensor 통합 설계
+## ⏱️ UART · FIFO · Stopwatch · Watch · Sensor 통합 설계 및 검증
 #### FPGA 설계 프로젝트 | Verilog | Basys3
 온디바이스AI 시스템 반도체 설계 1기 | 송주연 | 대한상공회의소 서울기술교육센터 | 2026.03.03
 
