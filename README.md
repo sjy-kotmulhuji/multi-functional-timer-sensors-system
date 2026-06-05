@@ -106,7 +106,7 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 
 ### 2. Watch 검증
 *   **UVM 구조**
-<img width="1155" height="673" alt="image" src="https://github.com/user-attachments/assets/23a89d34-804b-4c92-afb1-23ff01113e4e" />
+<img width="1474" height="857" alt="image" src="https://github.com/user-attachments/assets/440bc80e-5314-484f-96d0-afd108f5a4fb" />
 
 *   **시나리오**: `left`, `right`, `up`, `down`, `sw_2` 신호를 랜덤 생성하여 시간 수정 동작을 검증했습니다.
 *   **Timing**: 중복 동작 방지를 위해 입력 신호를 1클럭만 유지하고, negedge에서 값을 변경한 후 posedge에서 샘플링했습니다.
