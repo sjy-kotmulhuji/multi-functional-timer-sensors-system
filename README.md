@@ -97,11 +97,17 @@ PC와 FPGA 간의 **UART 양방향 통신 프로토콜**을 설계하고, **FIFO
 시스템의 신뢰성을 위해 Testbench 내부의 Golden Model과 DUT 출력을 비교하는 검증을 수행했습니다.,
 
 ### 1. Stopwatch 검증
+*   **UVM 구조**
+<img width="1045" height="627" alt="image" src="https://github.com/user-attachments/assets/dddfb0bf-02ae-43d4-bfe6-ea019911cfc4" />
+
 *   **시나리오**: `mode`, `clear`, `run_stop` 신호를 랜덤 생성하여 DUT와 Scoreboard 내 자체 카운터 값을 비교했습니다.
 *   **Timing**: Driving(posedge + 1ns), Sampling(negedge)을 통해 데이터 안정성을 확보했습니다.
 *   **결과**: 검증 과정에서 `clear` 시 100Hz tick count가 초기화되지 않는 설계 오류를 발견하여 수정했습니다.
 
 ### 2. Watch 검증
+*   **UVM 구조**
+<img width="1155" height="673" alt="image" src="https://github.com/user-attachments/assets/23a89d34-804b-4c92-afb1-23ff01113e4e" />
+
 *   **시나리오**: `left`, `right`, `up`, `down`, `sw_2` 신호를 랜덤 생성하여 시간 수정 동작을 검증했습니다.
 *   **Timing**: 중복 동작 방지를 위해 입력 신호를 1클럭만 유지하고, negedge에서 값을 변경한 후 posedge에서 샘플링했습니다.
 *   **결과**: Monitor에서 `sw_2` 신호 누락으로 인해 엉뚱한 자리가 수정되던 문제를 발견하고 해결하여 최종 **All Pass**를 확인했습니다.
