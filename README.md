@@ -69,7 +69,7 @@
 ### 1. UART & FIFO
 <img width="2613" height="1623" alt="Image" src="https://github.com/user-attachments/assets/87c92ea5-4d29-45c3-b80e-4579c5abd08d" />
 
-*   **UART RX/TX**: 비동기 통신을 수행하며, 1비트의 보드 레이트 오차를 줄이기 위해 **x16 오버샘플링** 기법을 적용했습니다.
+*   **UART RX/TX**: 비동기 통신을 수행하며, 1비트의 보드 레이트 오차로 인한 데이터 손실을 줄이기 위해 **x16 오버샘플링** 기법을 적용했습니다.
 *   **FIFO Buffer**: UART 수신/송신 시 데이터 유실을 방지하고 흐름을 제어하기 위해 RX와 TX 단에 각각 버퍼를 설계했습니다.
 *   **ASCII Decoder/Sender**: UART로 입력된 문자를 시스템 제어용 **Tick 신호**로 변환하거나 내부 데이터를 ASCII 포맷으로 변환하여 송신합니다.
 
