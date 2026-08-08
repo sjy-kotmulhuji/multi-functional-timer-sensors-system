@@ -1,25 +1,9 @@
 ## ⏱️ UART · FIFO · Stopwatch · Watch · Sensor 통합 설계 및 검증
-#### FPGA 설계 프로젝트 | Verilog | Basys3
 온디바이스AI 시스템 반도체 설계 1기 | 송주연 | 대한상공회의소 서울기술교육센터 | 2026.03.03
 
 --------------------------------------------------------------------------------
 
-### 📋 목차
-* [프로젝트 개요](#-프로젝트-개요)
-* [기술 스택 및 사양](#-기술-스택-및-사양)
-* [입출력 소자 및 인터페이스](#-입출력-소자-및-인터페이스)
-* [전체 Block Diagram](#-전체-Block-Diagram)
-* [모듈 상세 설명](#-모듈-상세-설명)
-    * UART / FIFO
-    * Stopwatch & Watch (상세 구조)
-    * Sensor (SR04 / DHT11)
-* [시뮬레이션 및 동작 확인](#-시뮬레이션-및-동작-확인)
-* [UVM-style 검증 (Stopwatch / Watch)](#-uvm-style-검증-stopwatch--watch)
-* [Trouble Shooting](#-trouble-shooting)
-
---------------------------------------------------------------------------------
-
-### 🎯 프로젝트 개요
+### 프로젝트 개요
 - PC와 FPGA 간의 **UART 양방향 통신 프로토콜** 설계
 - **FIFO 구조의 데이터 버퍼**를 통해 안정적인 데이터 송수신 환경을 구축
 - Basys3 보드의 버튼·스위치 및 PC 키 입력을 통해 동작하는 **디지털 스톱워치와 시계** 구현
@@ -40,7 +24,7 @@
 
 --------------------------------------------------------------------------------
 
-### 🎛 입출력 소자 및 인터페이스
+### 입출력 소자 및 인터페이스
 <img width="622" height="375" alt="Image" src="https://github.com/user-attachments/assets/25e76c03-2bd7-4d64-a605-6af052fe7893" />
 
 ### Switches & Buttons
@@ -67,7 +51,7 @@
 ### 🧩 모듈 상세 설명
 
 ### 1. UART & FIFO
-<img width="2613" height="1623" alt="Image" src="https://github.com/user-attachments/assets/87c92ea5-4d29-45c3-b80e-4579c5abd08d" />
+   <img width="1900" height="1223" alt="Image" src="https://github.com/user-attachments/assets/87c92ea5-4d29-45c3-b80e-4579c5abd08d" />
 
 *   **UART RX/TX**: 비동기 통신을 수행하며, 1비트의 보드 레이트 오차로 인한 데이터 손실을 줄이기 위해 **x16 오버샘플링** 기법을 적용했습니다.
 *   **FIFO Buffer**: UART 수신/송신 시 데이터 유실을 방지하고 흐름을 제어하기 위해 RX와 TX 단에 각각 버퍼를 설계했습니다.
@@ -83,8 +67,13 @@
     *   **Datapath**: 현재 시간을 유지하며, 수정 신호 발생 시 해당 자리의 값을 가감합니다.
 
 ### 3. Sensors
+| SR04 | DHT11 |
+| ------ | ------ |
+|<img width="335" height="215" alt="image" src="https://github.com/user-attachments/assets/f9622543-7b74-4d92-9d1c-4604d23bc843" /> | <img width="400" height="250" alt="image" src="https://github.com/user-attachments/assets/233c00fe-a0f7-4697-8852-764639f22188" /> |
+
 *   **SR04 (초음파 거리 센서)**: 40kHz 펄스를 발생시킨 후 Echo 신호의 High 유지 시간을 측정하여 거리(cm)로 환산합니다.
 *   **DHT11 (온습도 센서)**: 단일 와이어 **Half Duplex** 통신을 통해 40비트 데이터를 수신하며, 체크섬을 통해 유효성을 검증합니다.
+  - DHT11 
 
 --------------------------------------------------------------------------------
 
