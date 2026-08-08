@@ -73,7 +73,12 @@
 
 *   **SR04 (초음파 거리 센서)**: 40kHz 펄스를 발생시킨 후 Echo 신호의 High 유지 시간을 측정하여 거리(cm)로 환산합니다.
 *   **DHT11 (온습도 센서)**: 단일 와이어 **Half Duplex** 통신을 통해 40비트 데이터를 수신하며, 체크섬을 통해 유효성을 검증합니다.
-  - DHT11 
+  
+| DHT11 FSM | DHT11 ASM |
+| ------ | ------ |
+| <img width="933" height="417" alt="image" src="https://github.com/user-attachments/assets/1790560a-3443-417f-9359-451897545356" /> | <img width="1402" height="816" alt="image" src="https://github.com/user-attachments/assets/f747afc8-25f1-4b24-8d4e-4dcee4a67cf9" />
+
+
 
 --------------------------------------------------------------------------------
 
