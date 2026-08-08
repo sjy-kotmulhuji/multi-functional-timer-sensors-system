@@ -12,7 +12,7 @@
 
 --------------------------------------------------------------------------------
 
-### 🛠 기술 스택 및 사양
+### 기술 스택 및 사양
 | 항목 | 내용 |
 | ------ | ------ |
 | **언어** | Verilog HDL |
@@ -44,11 +44,11 @@
 
 --------------------------------------------------------------------------------
 
-### 🖌 전체 Block Diagram
+### 전체 Block Diagram
 
 <img width="1978" height="988" alt="Image" src="https://github.com/user-attachments/assets/e6034334-d11e-44d0-ac71-4698138c46b8" />
 
-### 🧩 모듈 상세 설명
+### 모듈 상세 설명
 
 ### 1. UART & FIFO
    <img width="1900" height="1223" alt="Image" src="https://github.com/user-attachments/assets/87c92ea5-4d29-45c3-b80e-4579c5abd08d" />
@@ -82,16 +82,22 @@
 
 --------------------------------------------------------------------------------
 
-### 📊 시뮬레이션 및 동작 확인
+### 시뮬레이션 및 동작 확인
 *   **전체 검증**: 버튼, 스위치, UART 명령 입력을 통해 스톱워치와 시계의 모든 기능이 정상 구동되는지 Top Module 레벨에서 확인했습니다.
-*   **Waveform 분석**:
-    *   **Stopwatch**: `r` 키 입력 시 `Run/Stop` 전환 및 `Clear` 동작의 타이밍을 검증했습니다.
-    *   **Watch**: 시간 수정 모드에서 각 단위별(msec, hour 등) 값 증감이 정상적으로 FND에 반영됨을 확인했습니다.
-    *   **Sensors**: 초음파 거리 데이터 및 온습도 40비트 데이터 수신 과정을 분석했습니다.
+*   **Waveform 분석**
+  <img width="500" height="370" alt="image" src="https://github.com/user-attachments/assets/d4205cc8-6432-4b93-b3fa-b7e7a9f9f45d" />
+  
+ *   **Stopwatch**: `r` 키 입력 시 `Run/Stop` 전환 및 `Clear` 동작의 타이밍을 검증했습니다.
+ *   **Watch**: 시간 수정 모드에서 각 단위별(msec, hour 등) 값 증감이 정상적으로 FND에 반영됨을 확인했습니다.
+ *   **Sensors**: 초음파 거리 데이터 및 온습도 40비트 데이터 수신 과정을 분석했습니다.
+      
+ *   **ComPort Master**로 ASCII 문자 송신 및 FPGA 반환 데이터 수신하여 UART 통신 동작 검증
+   <img width="500" height="382" alt="image" src="https://github.com/user-attachments/assets/f7b2f3a9-dd29-4fca-a546-4707be81e74b" />
+
 
 --------------------------------------------------------------------------------
 
-### 🧪 UVM-style 검증 (Stopwatch / Watch)
+### UVM-style 검증 (Stopwatch / Watch)
 시스템의 신뢰성을 위해 Testbench 내부의 Golden Model과 DUT 출력을 비교하는 검증을 수행했습니다.,
 
 ### 1. Stopwatch 검증
