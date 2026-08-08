@@ -94,7 +94,6 @@
  *   **ComPort Master**로 ASCII 문자 송신 및 FPGA 반환 데이터 수신하여 UART 통신 동작 검증
    <img width="500" height="382" alt="image" src="https://github.com/user-attachments/assets/f7b2f3a9-dd29-4fca-a546-4707be81e74b" />
 
-
 --------------------------------------------------------------------------------
 
 ### UVM-style 검증 (Stopwatch / Watch)
@@ -106,7 +105,7 @@
 
 *   **시나리오**: `mode`, `clear`, `run_stop` 신호를 랜덤 생성하여 DUT와 Scoreboard 내 자체 카운터 값을 비교했습니다.
 *   **Timing**: Driving(posedge + 1ns), Sampling(negedge)을 통해 데이터 안정성을 확보했습니다.
-*   **결과**: 검증 과정에서 `clear` 시 100Hz tick count가 초기화되지 않는 설계 오류를 발견하여 수정했습니다.
+*   **결과**: 총 3001회 검증 시도, **All Pass**
 
 ### 2. Watch 검증
 *   **UVM 구조**
@@ -114,7 +113,12 @@
 
 *   **시나리오**: `left`, `right`, `up`, `down`, `sw_2` 신호를 랜덤 생성하여 시간 수정 동작을 검증했습니다.
 *   **Timing**: 중복 동작 방지를 위해 입력 신호를 1클럭만 유지하고, negedge에서 값을 변경한 후 posedge에서 샘플링했습니다.
-*   **결과**: Monitor에서 `sw_2` 신호 누락으로 인해 엉뚱한 자리가 수정되던 문제를 발견하고 해결하여 최종 **All Pass**를 확인했습니다.
+*   **결과**: 총 202회 검증 시도, **All Pass**
+
+| Stopwatch 검증 결과 | Watch 검증 결과 |
+| ------ | ------ |
+| <img width="390" height="254" alt="image" src="https://github.com/user-attachments/assets/c3c91034-7b09-484f-8994-000b02bbf3ad" /> | <img width="433" height="290" alt="image" src="https://github.com/user-attachments/assets/bef3992a-2516-4389-a713-f0c693064aea" /> |
+
 
 --------------------------------------------------------------------------------
 
