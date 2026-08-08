@@ -123,7 +123,14 @@
 --------------------------------------------------------------------------------
 
 ### 🐛 Trouble Shooting
-*   **ASCII Decoder Tick 생성 오류**: UART 명령 시 Up/Down 기능이 매 클럭 반복되던 문제를 `rx_done` 펄스 시점에만 동작하도록 수정하여 해결했습니다.
-*   **초음파 센서 거리 계산 오차**: 카운트 시작 시점 보정(+1) 및 데이터시트의 58us=1cm 공식을 정확히 재적용하여 정확도를 높였습니다.
-*   **UVM Timing 불일치**: DUT와 Testbench 간의 Driving/Sampling 타이밍 지연 설정을 수정하여 검증 환경의 일관성을 확보했습니다.
+*  **Stopwatch DUT 설계 오류**
+  - **문제**: UVM-style 검증 중 Log를 확인해보니 시계의 실제 동작이 예상값과 다른 경우가 있었음
+  - **원인**: 기존 DUT 설계에서 100Hz tick count가 reset 시에만 초기화되고 clear 입력 시에는 초기화되지 않고 계속 증가함
+  - **해결-1**: DUT 설계에 맞춰 UVM-style의 Testbench의 시계 reference model에서도 100Hz tick count가 reset 시에만 초기화되도록 설계를 변경하니 DUT와 Testbench 동작이 정확히 일치함
+    - 이 해결의 잘못된 점: 설계 의도 상 clear는 reset과 같은 동작을 해야 하므로 기존 Testbench 설계가 맞는데 Simulation을 통과하기 위해 Testbench를 변경한 셈이 됨
+ - **해결-2**: 설계 의도에 맞게 DUT의 reset과 clear가 완전히 같은 동작을 하도록 설계를 변경함
+
+
+### 고찰
+- 검증의 목적이 Simulation All Pass가 아닌 DUT가 의도한 대로 동작하는지 혹은 오류는 없는지 찾아내는 과정이라는 것을 다시 한번 깊이 인지하게 되었다.
 
