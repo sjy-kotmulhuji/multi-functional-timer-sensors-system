@@ -77,7 +77,8 @@
   
 | DHT11 FSM | DHT11 ASM |
 | ------ | ------ |
-| <img width="933" height="417" alt="image" src="https://github.com/user-attachments/assets/1790560a-3443-417f-9359-451897545356" /> | <img width="1402" height="816" alt="image" src="https://github.com/user-attachments/assets/f747afc8-25f1-4b24-8d4e-4dcee4a67cf9" />
+| <img width="933" height="417" alt="image" src="https://github.com/user-attachments/assets/1790560a-3443-417f-9359-451897545356" /> | <img width="1400" height="1000" alt="image" src="https://github.com/user-attachments/assets/b1965f36-df6a-441a-9998-c733bd910382" />
+
 
 
 
