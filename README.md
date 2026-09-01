@@ -46,7 +46,8 @@
 
 ### 전체 Block Diagram
 
-<img width="1978" height="988" alt="Image" src="https://github.com/user-attachments/assets/e6034334-d11e-44d0-ac71-4698138c46b8" />
+<img width="12006" height="5610" alt="image" src="https://github.com/user-attachments/assets/7cfc5730-eb53-4d99-beea-c8d390fb81b3" />
+
 
 ### 모듈 상세 설명
 
