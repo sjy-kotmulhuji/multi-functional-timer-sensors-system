@@ -54,7 +54,7 @@
 
 ### 전체 Block Diagram
 
-<img width="1100" height="425" alt="image" src="https://github.com/user-attachments/assets/7cfc5730-eb53-4d99-beea-c8d390fb81b3" />
+<img width="1100" height="500" alt="image" src="https://github.com/user-attachments/assets/7cfc5730-eb53-4d99-beea-c8d390fb81b3" />
 
 ---
 
