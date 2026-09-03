@@ -54,13 +54,15 @@
 
 ### 전체 Block Diagram
 
-<img width="12006" height="5610" alt="image" src="https://github.com/user-attachments/assets/7cfc5730-eb53-4d99-beea-c8d390fb81b3" />
+<img width="1100" height="425" alt="image" src="https://github.com/user-attachments/assets/7cfc5730-eb53-4d99-beea-c8d390fb81b3" />
 
+---
 
 ### 모듈 상세 설명
 
 ### 1. UART & FIFO
-   <img width="1900" height="1223" alt="Image" src="https://github.com/user-attachments/assets/87c92ea5-4d29-45c3-b80e-4579c5abd08d" />
+   <img width="900" height="500" alt="image" src="https://github.com/user-attachments/assets/516ed2fd-8e37-46ef-8015-d0a6bd122f5c" />
+
 
 *   **UART RX/TX**: 비동기 통신을 수행하며, 1비트의 보드 레이트 오차로 인한 데이터 손실을 줄이기 위해 **x16 오버샘플링** 기법을 적용했습니다.
 *   **FIFO Buffer**: UART 수신/송신 시 데이터 유실을 방지하고 흐름을 제어하기 위해 RX와 TX 단에 각각 버퍼를 설계했습니다.
@@ -95,14 +97,14 @@
 ### 시뮬레이션 및 동작 확인
 *   **전체 검증**: 버튼, 스위치, UART 명령 입력을 통해 스톱워치와 시계의 모든 기능이 정상 구동되는지 Top Module 레벨에서 확인했습니다.
 *   **Waveform 분석**
-  <img width="500" height="370" alt="image" src="https://github.com/user-attachments/assets/d4205cc8-6432-4b93-b3fa-b7e7a9f9f45d" />
-  
- *   **Stopwatch**: `r` 키 입력 시 `Run/Stop` 전환 및 `Clear` 동작의 타이밍을 검증했습니다.
- *   **Watch**: 시간 수정 모드에서 각 단위별(msec, hour 등) 값 증감이 정상적으로 FND에 반영됨을 확인했습니다.
- *   **Sensors**: 초음파 거리 데이터 및 온습도 40비트 데이터 수신 과정을 분석했습니다.
+      *   **Stopwatch**: `r` 키 입력 시 `Run/Stop` 전환 및 `Clear` 동작의 타이밍을 검증했습니다.
+    *   **Watch**: 시간 수정 모드에서 각 단위별(msec, hour 등) 값 증감이 정상적으로 FND에 반영됨을 확인했습니다.
+    *   **Sensors**: 초음파 거리 데이터 및 온습도 40비트 데이터 수신 과정을 분석했습니다.
       
- *   **ComPort Master**로 ASCII 문자 송신 및 FPGA 반환 데이터 수신하여 UART 통신 동작 검증
-   <img width="500" height="382" alt="image" src="https://github.com/user-attachments/assets/f7b2f3a9-dd29-4fca-a546-4707be81e74b" />
+*   **ComPort Master**로 ASCII 문자 송신 및 FPGA 반환 데이터 수신하여 UART 통신 동작 검증
+  
+      <img width="800" height="500" alt="image" src="https://github.com/user-attachments/assets/171648d5-0a4e-4dc8-bd72-f99c7b90a6da" />
+
 
 --------------------------------------------------------------------------------
 
