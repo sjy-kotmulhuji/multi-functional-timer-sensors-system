@@ -12,15 +12,23 @@
 
 --------------------------------------------------------------------------------
 
-### 기술 스택 및 사양
-| 항목 | 내용 |
-| ------ | ------ |
-| **언어** | Verilog HDL |
-| **보드** | Digilent Basys3 (Artix-7 xc7a35t) |
-| **개발 툴** | Vivado 2023.1 |
-| **통신 프로토콜** | UART Full Duplex (Baud rate: 9600bps, x16 Over Sampling) |
-| **데이터 버퍼** | FIFO (RX / TX 각각 구현) |
-| **외부 센서** | HC-SR04 (초음파 거리), DHT11 (온습도) |
+## 개발 환경
+
+<table>
+<tr><td><b>Language</b></td><td>
+<img src="https://img.shields.io/badge/-VERILOG-A900D0?style=for-the-badge&logoColor=white"/>
+<img src="https://img.shields.io/badge/-SYSTEMVERILOG-00A99D?style=for-the-badge&logoColor=white"/>
+</td></tr>
+<tr><td><b>Tool</b></td><td>
+<img src="https://img.shields.io/badge/VIVADO_(SIMULATION)-006400?style=for-the-badge&logo=amd&logoColor=white"/>
+</td></tr>
+<tr><td><b>Hardware</b></td><td>
+<img src="https://img.shields.io/badge/Basys3(FPGA)-FFC107?style=for-the-badge&logoColor=white"/>
+<img src="https://img.shields.io/badge/SR04(Sensor)-FF1110?style=for-the-badge&logoColor=white"/>
+<img src="https://img.shields.io/badge/DHT11(Sensor)-FF6070?style=for-the-badge&logoColor=white"/>
+</td></tr>
+</table>
+
 
 --------------------------------------------------------------------------------
 
